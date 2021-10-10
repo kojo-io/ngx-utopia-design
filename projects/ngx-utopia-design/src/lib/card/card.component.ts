@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'utp-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CardComponent{
+ @Input() cardTitleRef: TemplateRef<any>;
 }

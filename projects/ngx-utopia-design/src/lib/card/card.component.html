@@ -1,1 +1,8 @@
-<p>card works!</p>
+<div class="h-full w-full border divide-y">
+  <ng-container *ngIf="cardTitleRef">
+    <div class="h-auto flex p-2">
+      <ng-container *ngTemplateOutlet="cardTitleRef"></ng-container>
+    </div>
+  </ng-container>
+  <ng-content select="[utp-card-body]"></ng-content>
+</div>
