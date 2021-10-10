@@ -1,1 +1,65 @@
-<p>navbar works!</p>
+<div class="transition ease-in-out duration-500 bg-white"
+     [ngStyle]="{ 'width': orientation === 'vertical' ? width : null }"
+     [class.flex]="orientation === 'horizontal'"
+     [class.h-24]="orientation === 'horizontal'"
+     [class.h-full]="orientation === 'vertical'"
+     [class.px-4]="orientation === 'horizontal'"
+     [class.pt-4]="orientation === 'vertical'"
+     [class.border]="border"
+     [class.w-full]="orientation === 'horizontal'"
+     [class.transform]="collapse"
+     [class.-translate-x-full]="collapse"
+     [class.w-0]="collapse"
+     [class.space-x-4]="orientation === 'horizontal'">
+  <ng-container *ngIf="!customLogoTitleTemplate">
+    <ng-container *ngIf="logoType === 'logo'">
+      <img
+        [src]="logoSrc"
+        [class.px-4]="orientation === 'vertical'"
+        [class.w-24]="orientation === 'vertical'" class="relative">
+    </ng-container>
+    <ng-container *ngIf="logoType === 'title'">
+      <div [class.px-4]="orientation === 'vertical'"
+           [class.flex]="orientation === 'horizontal'"
+           [class.flex-wrap]="orientation === 'horizontal'"
+           [class.content-center]="orientation === 'horizontal'"
+           [class.h-full]="orientation === 'horizontal'">
+        <span class="text-xl font-bold">{{title}}</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="logoType === 'both'">
+      <img [class.w-24]="orientation === 'vertical'"
+           [class.px-4]="orientation === 'vertical'"
+           [class.py-4]="orientation === 'horizontal'"
+           [class.px-1]="orientation === 'horizontal'"
+           [src]="logoSrc" class="relative">
+      <div [class.px-4]="orientation === 'vertical'"
+           [class.flex]="orientation === 'horizontal'"
+           [class.flex-wrap]="orientation === 'horizontal'"
+           [class.content-center]="orientation === 'horizontal'"
+           [class.h-full]="orientation === 'horizontal'">
+        <span class="text-xl font-bold">{{title}}</span>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="customLogoTitleTemplate">
+   <ng-container *ngTemplateOutlet="customLogoTitleTemplate"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="routes.length > 0">
+    <div
+         [class.w-full]="orientation === 'horizontal'"
+         [class.flex]="orientation === 'horizontal'"
+         [class.justify-end]="navItemsPosition === 'right'"
+         [class.justify-start]="navItemsPosition === 'left'">
+      <ng-container *ngFor="let route of routes; let i = index">
+        <div class="flex flex-wrap content-center h-full">
+          <div [routerLink]="route.path"
+               [class.bg-gray-200]="selectedIndex === i"
+               (click)="selected(i)" class="cursor-pointer hover:text-blue-600 px-4 py-4 w-full">
+            <span>{{route.title}}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

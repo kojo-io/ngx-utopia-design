@@ -8,3 +8,4 @@ export * from './lib/ngx-utopia-design.module';
 export * from './lib/card/card.component';
 export * from './lib/card-body/card-body.component';
 export * from './lib/navbar/navbar.component';
+export * from './lib/interfaces/utp-routes';
